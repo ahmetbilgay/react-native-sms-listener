@@ -9,11 +9,18 @@ npm install react-native-sms-listener
 ## Usage
 
 ```js
-import { multiply } from "react-native-sms-listener";
+import SmsListener from "react-native-sms-listener";
 
 // ...
 
-const result = await multiply(3, 7);
+const getData = async () => {
+    SmsListener.readSMS()
+      .then((res) => {
+        setSmsData(res);
+        // ...
+      })
+      .catch((err) => console.log(err));
+  };
 ```
 
 ## Contributing
