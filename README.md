@@ -1,10 +1,5 @@
 # react-native-sms-listener
 listen sms
-## Installation
-
-```sh
-npm install react-native-sms-listener
-```
 
 ## Usage
 
