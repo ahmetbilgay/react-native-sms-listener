@@ -1,5 +1,5 @@
 # react-native-sms-listener
-listen sms
+It is a library that captures incoming sms that only works on android.
 
 ## Usage
 
