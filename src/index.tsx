@@ -6,7 +6,9 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const SmsListener = NativeModules.SmsListener  ? NativeModules.SmsListener  : new Proxy(
+const SmsListener = NativeModules.SmsListener
+  ? NativeModules.SmsListener
+  : new Proxy(
       {},
       {
         get() {
@@ -15,7 +17,4 @@ const SmsListener = NativeModules.SmsListener  ? NativeModules.SmsListener  : ne
       }
     );
 
-export async function handleSms(){
-  return SmsListener.readSMS()
-
-}
+export default SmsListener;
