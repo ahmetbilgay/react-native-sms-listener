@@ -15,6 +15,7 @@ const SmsListener = NativeModules.SmsListener  ? NativeModules.SmsListener  : ne
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return SmsListener.multiply(a, b);
+export async function handleSms(){
+  return SmsListener.readSMS()
+
 }

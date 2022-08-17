@@ -1,7 +1,8 @@
 package com.reactnativesmslistener;
 
 import androidx.annotation.NonNull;
-
+import android.database.Cursor;
+import android.net.Uri;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -21,13 +22,17 @@ public class SmsListenerModule extends ReactContextBaseJavaModule {
     public String getName() {
         return NAME;
     }
-
-
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
     @ReactMethod
-    public void multiply(double a, double b, Promise promise) {
-        promise.resolve(a * b);
+    public void readSMS(Promise promise){
+        try {
+            Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse("content://sms"),null,null,null,null);
+            cursor.moveToFirst();
+            cursor.getString(12);
+            promise.resolve(   cursor.getString(12));
+
+        }catch (Exception e){
+            promise.reject("Error sıçtık.");
+        }
     }
 
 }
